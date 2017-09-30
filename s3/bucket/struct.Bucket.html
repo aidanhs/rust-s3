@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Bucket` struct in crate `s3`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Bucket">
+
+    <title>s3::bucket::Bucket - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Bucket</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>s3</a>::<wbr><a href='index.html'>bucket</a></p><script>window.sidebarCurrent = {name: 'Bucket', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>s3</a>::<wbr><a href='index.html'>bucket</a>::<wbr><a class="struct" href=''>Bucket</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/s3/bucket.rs.html#25-31' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Bucket {
+    pub name: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
+    pub region: <a class="enum" href="../../s3/region/enum.Region.html" title="enum s3::region::Region">Region</a>,
+    pub credentials: <a class="struct" href="../../s3/credentials/struct.Credentials.html" title="struct s3::credentials::Credentials">Credentials</a>,
+    pub extra_headers: <a class="type" href="../../s3/request/type.Headers.html" title="type s3::request::Headers">Headers</a>,
+    pub extra_query: <a class="type" href="../../s3/request/type.Query.html" title="type s3::request::Query">Query</a>,
+}</pre><div class='docblock'>
+<h1 id='example' class='section-header'><a href='#example'>Example</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">bucket</span>::<span class="ident">Bucket</span>;
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">credentials</span>::<span class="ident">Credentials</span>;
+
+<span class="kw">let</span> <span class="ident">bucket_name</span> <span class="op">=</span> <span class="string">&quot;rust-s3-test&quot;</span>;
+<span class="kw">let</span> <span class="ident">region</span> <span class="op">=</span> <span class="string">&quot;us-east-1&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
+<span class="kw">let</span> <span class="ident">credentials</span> <span class="op">=</span> <span class="ident">Credentials</span>::<span class="ident">new</span>(<span class="string">&quot;access_key&quot;</span>, <span class="string">&quot;secret_key&quot;</span>, <span class="prelude-val">None</span>);
+
+<span class="kw">let</span> <span class="ident">bucket</span> <span class="op">=</span> <span class="ident">Bucket</span>::<span class="ident">new</span>(<span class="ident">bucket_name</span>, <span class="ident">region</span>, <span class="ident">credentials</span>);</pre>
+</div><h2 id='fields' class='fields'>Fields</h2><span id='structfield.name' class="structfield">
+                           <span id='name.v' class='invisible'>
+                           <code>name: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></code>
+                           </span></span><span id='structfield.region' class="structfield">
+                           <span id='region.v' class='invisible'>
+                           <code>region: <a class="enum" href="../../s3/region/enum.Region.html" title="enum s3::region::Region">Region</a></code>
+                           </span></span><span id='structfield.credentials' class="structfield">
+                           <span id='credentials.v' class='invisible'>
+                           <code>credentials: <a class="struct" href="../../s3/credentials/struct.Credentials.html" title="struct s3::credentials::Credentials">Credentials</a></code>
+                           </span></span><span id='structfield.extra_headers' class="structfield">
+                           <span id='extra_headers.v' class='invisible'>
+                           <code>extra_headers: <a class="type" href="../../s3/request/type.Headers.html" title="type s3::request::Headers">Headers</a></code>
+                           </span></span><span id='structfield.extra_query' class="structfield">
+                           <span id='extra_query.v' class='invisible'>
+                           <code>extra_query: <a class="type" href="../../s3/request/type.Query.html" title="type s3::request::Query">Query</a></code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../s3/bucket/struct.Bucket.html" title="struct s3::bucket::Bucket">Bucket</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/s3/bucket.rs.html#33-269' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, region: <a class="enum" href="../../s3/region/enum.Region.html" title="enum s3::region::Region">Region</a>, credentials: <a class="struct" href="../../s3/credentials/struct.Credentials.html" title="struct s3::credentials::Credentials">Credentials</a>) -&gt; <a class="struct" href="../../s3/bucket/struct.Bucket.html" title="struct s3::bucket::Bucket">Bucket</a></code></span></h4>
+<div class='docblock'><p>Instantiate a new <code>Bucket</code>.</p>
+
+<h1 id='example-1' class='section-header'><a href='#example-1'>Example</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">bucket</span>::<span class="ident">Bucket</span>;
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">credentials</span>::<span class="ident">Credentials</span>;
+
+<span class="kw">let</span> <span class="ident">bucket_name</span> <span class="op">=</span> <span class="string">&quot;rust-s3-test&quot;</span>;
+<span class="kw">let</span> <span class="ident">region</span> <span class="op">=</span> <span class="string">&quot;us-east-1&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
+<span class="kw">let</span> <span class="ident">credentials</span> <span class="op">=</span> <span class="ident">Credentials</span>::<span class="ident">new</span>(<span class="string">&quot;access_key&quot;</span>, <span class="string">&quot;secret_key&quot;</span>, <span class="prelude-val">None</span>);
+
+<span class="kw">let</span> <span class="ident">bucket</span> <span class="op">=</span> <span class="ident">Bucket</span>::<span class="ident">new</span>(<span class="ident">bucket_name</span>, <span class="ident">region</span>, <span class="ident">credentials</span>);</pre>
+</div><h4 id='method.get' class="method"><span id='get.v' class='invisible'><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="type" href="../../s3/error/type.S3Result.html" title="type s3::error::S3Result">S3Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</code></span></h4>
+<div class='docblock'><p>Gets file from an S3 path.</p>
+
+<h1 id='example-2' class='section-header'><a href='#example-2'>Example:</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">bucket</span>::<span class="ident">Bucket</span>;
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">credentials</span>::<span class="ident">Credentials</span>;
+
+<span class="kw">let</span> <span class="ident">bucket_name</span> <span class="op">=</span> <span class="string">&quot;rust-s3-test&quot;</span>;
+<span class="kw">let</span> <span class="ident">region</span> <span class="op">=</span> <span class="string">&quot;us-east-1&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
+<span class="kw">let</span> <span class="ident">credentials</span> <span class="op">=</span> <span class="ident">Credentials</span>::<span class="ident">new</span>(<span class="string">&quot;access_key&quot;</span>, <span class="string">&quot;secret_key&quot;</span>, <span class="prelude-val">None</span>);
+<span class="kw">let</span> <span class="ident">bucket</span> <span class="op">=</span> <span class="ident">Bucket</span>::<span class="ident">new</span>(<span class="ident">bucket_name</span>, <span class="ident">region</span>, <span class="ident">credentials</span>);
+
+<span class="kw">let</span> (<span class="ident">data</span>, <span class="ident">code</span>) <span class="op">=</span> <span class="ident">bucket</span>.<span class="ident">get</span>(<span class="string">&quot;/test.file&quot;</span>).<span class="ident">unwrap</span>();
+<span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;Code: {}\nData: {:?}&quot;</span>, <span class="ident">code</span>, <span class="ident">data</span>);</pre>
+</div><h4 id='method.delete' class="method"><span id='delete.v' class='invisible'><code>fn <a href='#method.delete' class='fnname'>delete</a>(&amp;self, path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="type" href="../../s3/error/type.S3Result.html" title="type s3::error::S3Result">S3Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</code></span></h4>
+<div class='docblock'><p>Delete file from an S3 path.</p>
+
+<h1 id='example-3' class='section-header'><a href='#example-3'>Example:</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">bucket</span>::<span class="ident">Bucket</span>;
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">credentials</span>::<span class="ident">Credentials</span>;
+
+<span class="kw">let</span> <span class="ident">bucket_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&quot;rust-s3-test&quot;</span>;
+<span class="kw">let</span> <span class="ident">region</span> <span class="op">=</span> <span class="string">&quot;us-east-1&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
+<span class="kw">let</span> <span class="ident">credentials</span> <span class="op">=</span> <span class="ident">Credentials</span>::<span class="ident">new</span>(<span class="string">&quot;access_key&quot;</span>, <span class="string">&quot;secret_key&quot;</span>, <span class="prelude-val">None</span>);
+<span class="kw">let</span> <span class="ident">bucket</span> <span class="op">=</span> <span class="ident">Bucket</span>::<span class="ident">new</span>(<span class="ident">bucket_name</span>, <span class="ident">region</span>, <span class="ident">credentials</span>);
+
+<span class="kw">let</span> (_, <span class="ident">code</span>) <span class="op">=</span> <span class="ident">bucket</span>.<span class="ident">delete</span>(<span class="string">&quot;/test.file&quot;</span>).<span class="ident">unwrap</span>();
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="number">204</span>, <span class="ident">code</span>);</pre>
+</div><h4 id='method.put' class="method"><span id='put.v' class='invisible'><code>fn <a href='#method.put' class='fnname'>put</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;content_type: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>) -&gt; <a class="type" href="../../s3/error/type.S3Result.html" title="type s3::error::S3Result">S3Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</code></span></h4>
+<div class='docblock'><p>Put into an S3 bucket.</p>
+
+<h1 id='example-4' class='section-header'><a href='#example-4'>Example</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">bucket</span>::<span class="ident">Bucket</span>;
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">credentials</span>::<span class="ident">Credentials</span>;
+
+<span class="kw">let</span> <span class="ident">bucket_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&quot;rust-s3-test&quot;</span>;
+<span class="kw">let</span> <span class="ident">aws_access</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&quot;access_key&quot;</span>;
+<span class="kw">let</span> <span class="ident">aws_secret</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&quot;secret_key&quot;</span>;
+
+<span class="kw">let</span> <span class="ident">bucket_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&quot;rust-s3-test&quot;</span>;
+<span class="kw">let</span> <span class="ident">region</span> <span class="op">=</span> <span class="string">&quot;us-east-1&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
+<span class="kw">let</span> <span class="ident">credentials</span> <span class="op">=</span> <span class="ident">Credentials</span>::<span class="ident">new</span>(<span class="string">&quot;access_key&quot;</span>, <span class="string">&quot;secret_key&quot;</span>, <span class="prelude-val">None</span>);
+<span class="kw">let</span> <span class="ident">bucket</span> <span class="op">=</span> <span class="ident">Bucket</span>::<span class="ident">new</span>(<span class="ident">bucket_name</span>, <span class="ident">region</span>, <span class="ident">credentials</span>);
+
+<span class="kw">let</span> <span class="ident">content</span> <span class="op">=</span> <span class="string">&quot;I want to go to S3&quot;</span>.<span class="ident">as_bytes</span>();
+<span class="kw">let</span> (_, <span class="ident">code</span>) <span class="op">=</span> <span class="ident">bucket</span>.<span class="ident">put</span>(<span class="string">&quot;/test.file&quot;</span>, <span class="ident">content</span>, <span class="string">&quot;text/plain&quot;</span>).<span class="ident">unwrap</span>();
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="number">201</span>, <span class="ident">code</span>);</pre>
+</div><h4 id='method.list' class="method"><span id='list.v' class='invisible'><code>fn <a href='#method.list' class='fnname'>list</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;prefix: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;delimiter: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="type" href="../../s3/error/type.S3Result.html" title="type s3::error::S3Result">S3Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../../s3/serde_types/struct.ListBucketResult.html" title="struct s3::serde_types::ListBucketResult">ListBucketResult</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>List the contents of an S3 bucket.</p>
+
+<h1 id='example-5' class='section-header'><a href='#example-5'>Example</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">str</span>;
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">bucket</span>::<span class="ident">Bucket</span>;
+<span class="kw">use</span> <span class="ident">s3</span>::<span class="ident">credentials</span>::<span class="ident">Credentials</span>;
+<span class="kw">let</span> <span class="ident">bucket_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&quot;rust-s3-test&quot;</span>;
+<span class="kw">let</span> <span class="ident">aws_access</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&quot;access_key&quot;</span>;
+<span class="kw">let</span> <span class="ident">aws_secret</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&quot;secret_key&quot;</span>;
+
+<span class="kw">let</span> <span class="ident">bucket_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="string">&quot;rust-s3-test&quot;</span>;
+<span class="kw">let</span> <span class="ident">region</span> <span class="op">=</span> <span class="string">&quot;us-east-1&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>();
+<span class="kw">let</span> <span class="ident">credentials</span> <span class="op">=</span> <span class="ident">Credentials</span>::<span class="ident">new</span>(<span class="string">&quot;access_key&quot;</span>, <span class="string">&quot;secret_key&quot;</span>, <span class="prelude-val">None</span>);
+<span class="kw">let</span> <span class="ident">bucket</span> <span class="op">=</span> <span class="ident">Bucket</span>::<span class="ident">new</span>(<span class="ident">bucket_name</span>, <span class="ident">region</span>, <span class="ident">credentials</span>);
+
+<span class="kw">let</span> <span class="ident">results</span> <span class="op">=</span> <span class="ident">bucket</span>.<span class="ident">list</span>(<span class="string">&quot;/&quot;</span>, <span class="prelude-val">Some</span>(<span class="string">&quot;/&quot;</span>)).<span class="ident">unwrap</span>();
+<span class="kw">for</span> (<span class="ident">list</span>, <span class="ident">code</span>) <span class="kw">in</span> <span class="ident">results</span> {
+    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="number">200</span>, <span class="ident">code</span>);
+    <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">list</span>);
+}</pre>
+</div><h4 id='method.name' class="method"><span id='name.v-1' class='invisible'><code>fn <a href='#method.name' class='fnname'>name</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a></code></span></h4>
+<div class='docblock'><p>Get a reference to the name of the S3 bucket.</p>
+</div><h4 id='method.host' class="method"><span id='host.v' class='invisible'><code>fn <a href='#method.host' class='fnname'>host</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a></code></span></h4>
+<div class='docblock'><p>Get a reference to the hostname of the S3 API endpoint.</p>
+</div><h4 id='method.region' class="method"><span id='region.v-1' class='invisible'><code>fn <a href='#method.region' class='fnname'>region</a>(&amp;self) -&gt; <a class="enum" href="../../s3/region/enum.Region.html" title="enum s3::region::Region">Region</a></code></span></h4>
+<div class='docblock'><p>Get the region this object will connect to.</p>
+</div><h4 id='method.access_key' class="method"><span id='access_key.v' class='invisible'><code>fn <a href='#method.access_key' class='fnname'>access_key</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a></code></span></h4>
+<div class='docblock'><p>Get a reference to the AWS access key.</p>
+</div><h4 id='method.secret_key' class="method"><span id='secret_key.v' class='invisible'><code>fn <a href='#method.secret_key' class='fnname'>secret_key</a>(&amp;self) -&gt; &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a></code></span></h4>
+<div class='docblock'><p>Get a reference to the AWS secret key.</p>
+</div><h4 id='method.token' class="method"><span id='token.v' class='invisible'><code>fn <a href='#method.token' class='fnname'>token</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span></h4>
+<div class='docblock'><p>Get a reference to the AWS token.</p>
+</div><h4 id='method.credentials' class="method"><span id='credentials.v-1' class='invisible'><code>fn <a href='#method.credentials' class='fnname'>credentials</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../s3/credentials/struct.Credentials.html" title="struct s3::credentials::Credentials">Credentials</a></code></span></h4>
+<div class='docblock'><p>Get a reference to the full <a href="struct.Credentials.html"><code>Credentials</code></a>
+object used by this <code>Bucket</code>.</p>
+</div><h4 id='method.set_credentials' class="method"><span id='set_credentials.v' class='invisible'><code>fn <a href='#method.set_credentials' class='fnname'>set_credentials</a>(&amp;mut self, credentials: <a class="struct" href="../../s3/credentials/struct.Credentials.html" title="struct s3::credentials::Credentials">Credentials</a>) -&gt; <a class="struct" href="../../s3/credentials/struct.Credentials.html" title="struct s3::credentials::Credentials">Credentials</a></code></span></h4>
+<div class='docblock'><p>Change the credentials used by the Bucket, returning the existing
+credentials.</p>
+</div><h4 id='method.add_header' class="method"><span id='add_header.v' class='invisible'><code>fn <a href='#method.add_header' class='fnname'>add_header</a>(&amp;mut self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</code></span></h4>
+<div class='docblock'><p>Add an extra header to send with requests to S3.</p>
+
+<p>Add an extra header to send with requests. Note that the library
+already sets a number of headers - headers set with this method will be
+overridden by the library headers:
+  * Host
+  * Content-Type
+  * Date
+  * Content-Length
+  * Authorization
+  * X-Amz-Content-Sha256
+  * X-Amz-Date</p>
+</div><h4 id='method.extra_headers' class="method"><span id='extra_headers.v-1' class='invisible'><code>fn <a href='#method.extra_headers' class='fnname'>extra_headers</a>(&amp;self) -&gt; &amp;<a class="type" href="../../s3/request/type.Headers.html" title="type s3::request::Headers">Headers</a></code></span></h4>
+<div class='docblock'><p>Get a reference to the extra headers to be passed to the S3 API.</p>
+</div><h4 id='method.extra_headers_mut' class="method"><span id='extra_headers_mut.v' class='invisible'><code>fn <a href='#method.extra_headers_mut' class='fnname'>extra_headers_mut</a>(&amp;mut self) -&gt; &amp;mut <a class="type" href="../../s3/request/type.Headers.html" title="type s3::request::Headers">Headers</a></code></span></h4>
+<div class='docblock'><p>Get a mutable reference to the extra headers to be passed to the S3
+API.</p>
+</div><h4 id='method.add_query' class="method"><span id='add_query.v' class='invisible'><code>fn <a href='#method.add_query' class='fnname'>add_query</a>(&amp;mut self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</code></span></h4>
+<div class='docblock'><p>Add an extra query pair to the URL used for S3 API access.</p>
+</div><h4 id='method.extra_query' class="method"><span id='extra_query.v-1' class='invisible'><code>fn <a href='#method.extra_query' class='fnname'>extra_query</a>(&amp;self) -&gt; &amp;<a class="type" href="../../s3/request/type.Query.html" title="type s3::request::Query">Query</a></code></span></h4>
+<div class='docblock'><p>Get a reference to the extra query pairs to be passed to the S3 API.</p>
+</div><h4 id='method.extra_query_mut' class="method"><span id='extra_query_mut.v' class='invisible'><code>fn <a href='#method.extra_query_mut' class='fnname'>extra_query_mut</a>(&amp;mut self) -&gt; &amp;mut <a class="type" href="../../s3/request/type.Query.html" title="type s3::request::Query">Query</a></code></span></h4>
+<div class='docblock'><p>Get a mutable reference to the extra query pairs to be passed to the S3
+API.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../s3/bucket/struct.Bucket.html" title="struct s3::bucket::Bucket">Bucket</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/s3/bucket.rs.html#24' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../s3/bucket/struct.Bucket.html" title="struct s3::bucket::Bucket">Bucket</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../../s3/bucket/struct.Bucket.html" title="struct s3::bucket::Bucket">Bucket</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/s3/bucket.rs.html#24' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> for <a class="struct" href="../../s3/bucket/struct.Bucket.html" title="struct s3::bucket::Bucket">Bucket</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/s3/bucket.rs.html#24' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="struct" href="../../s3/bucket/struct.Bucket.html" title="struct s3::bucket::Bucket">Bucket</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/s3/bucket.rs.html#24' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../../s3/bucket/struct.Bucket.html" title="struct s3::bucket::Bucket">Bucket</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../../s3/bucket/struct.Bucket.html" title="struct s3::bucket::Bucket">Bucket</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "s3";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

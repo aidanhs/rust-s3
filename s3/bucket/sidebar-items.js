@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Bucket","Example ``` use s3::bucket::Bucket; use s3::credentials::Credentials;"]]});
