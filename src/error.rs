@@ -5,7 +5,6 @@ error_chain! {
         foreign_links {
             FromUtf8(::std::string::FromUtf8Error);
             SerdeXML(::serde_xml::Error);
-            Curl(::curl::Error);
         }
         errors {
             AwsError { info: ::serde_types::AwsError, status: u32, body: String } {

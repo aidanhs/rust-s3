@@ -1,12 +1,11 @@
 use std::collections::HashMap;
-use std::io::{Read, Cursor};
 
 use bucket::Bucket;
+use cabot::{Client, RequestBuilder};
 use chrono::{DateTime, Utc};
 use command::Command;
 use hmac::{Hmac, Mac};
 use sha2::{Digest, Sha256};
-use curl::easy::{Easy, List, ReadError};
 use hex::ToHex;
 use url::Url;
 use serde_xml;
@@ -170,57 +169,37 @@ impl<'a> Request<'a> {
         Ok(headers)
     }
 
-    fn load_content(&self, handle: &mut Easy) -> S3Result<Cursor<&[u8]>> {
-        if let Command::Put { content, .. } = self.command {
-            try!(handle.put(true));
-            try!(handle.post_field_size(content.len() as u64));
-            Ok(Cursor::new(content))
-        } else {
-            Ok(Cursor::new(&[] as &[u8]))
-        }
-    }
-
     pub fn execute(&self) -> S3Result<(Vec<u8>, u32)> {
-        let mut handle = Easy::new();
-        handle.url(self.url().as_str())?;
+        let mut builder = RequestBuilder::new(self.url().as_str());
 
-        // Special handling to load PUT content
-        let mut content_cursor = try!(self.load_content(&mut handle));
+        if let Command::Put { content, .. } = self.command {
+            builder = builder.set_body(content);
+        }
 
         // Set GET, PUT, etc
-        handle.custom_request(self.command.http_verb())?;
+        builder = builder.set_http_method(self.command.http_verb());
 
-        // Build and set a Curl List of headers
-        let mut list = List::new();
+        // Set the headers
         for (key, value) in try!(self.headers()).iter() {
             let header = format!("{}: {}", key, value);
-            list.append(&header)?;
+            builder = builder.add_header(&header);
         }
-        handle.http_headers(list)?;
 
         // Run the transfer
-        let mut dst = Vec::new();
-        {
-            let mut transfer = handle.transfer();
+        let req = builder.build().unwrap();
+        let clt = Client::new();
+        let res = clt.execute(&req).unwrap();
+        let body = res.body().unwrap();
 
-            transfer.read_function(|buf| content_cursor.read(buf).or(Err(ReadError::Abort)))?;
-
-            transfer.write_function(|data| {
-                dst.extend_from_slice(data);
-                Ok(data.len())
-            })?;
-
-            transfer.perform()?;
-        }
-        let resp_code = handle.response_code()?;
+        let resp_code = res.status_code() as u32;
         if resp_code < 300 {
-            Ok((dst, resp_code))
+            Ok((body.to_owned(), resp_code))
         } else {
-            let deserialized: AwsError = serde_xml::deserialize(dst.as_slice())?;
+            let deserialized: AwsError = serde_xml::deserialize(body)?;
             let err = ErrorKind::AwsError {
                 info: deserialized,
                 status: resp_code,
-                body: String::from_utf8_lossy(dst.as_slice()).into_owned()
+                body: String::from_utf8_lossy(body).into_owned()
             };
             Err(err.into())
         }
