@@ -12,9 +12,6 @@ use region::Region;
 use request::Headers;
 use sha2::{Digest, Sha256};
 
-use serde_xml;
-use serde_types::ListBucketResult;
-
 const SHORT_DATE: &'static str = "%Y%m%d";
 const LONG_DATETIME: &'static str = "%Y%m%dT%H%M%SZ";
 
@@ -137,9 +134,11 @@ mod tests {
 
     use chrono::{TimeZone, Utc};
     use hex::ToHex;
+    use request::Headers;
+    use serde_xml;
+    use serde_types::ListBucketResult;
     use url::Url;
 
-    use request::Headers;
     use super::*;
 
     #[test]
